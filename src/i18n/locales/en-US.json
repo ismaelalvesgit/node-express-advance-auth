@@ -1,0 +1,37 @@
+{
+    "Unauthorized.required": "No credential required",
+    "Unauthorized.user": "Incorrect username or password",
+	"Unauthorized.token.invalid": "Invalid or incorrect token",
+	"Unauthorized.token.required": "Token not found",
+	"ServiceUnavailable.router": "Route is yet to be configured",
+	"ServiceUnavailable.throttling": "Request limit reached 😅, wait a while and try again 😇",
+
+    "NotFound": "{{code}} not found",
+
+    "BadRequest.Role":"Fail to create Role",
+    "BadRequest.User":"Fail to create user",
+    "BadRequest.Scope":"Fail to create Scope",
+
+    "User.create": "check your e-mail",
+    "User.update": "User update sucess",
+    "Role.create": "Role Created",
+	"Role.update": "Role update sucess",
+	"Role.active": "Role active",
+	"Role.disabled": "Role desactived",
+	"Scope.create": "Scope Created",
+	"Scope.update": "Scope update sucess",
+	"Scope.active": "Scope actived",
+	"Scope.disabled": "Scope desactived",
+	"Scope.add.role": "Role add by sucess",
+    "Credential.create": "Credential Created",
+
+    "ValidadeSchema.required":"{{name}} is required",
+	"ValidadeSchema.min": "{{name}} length must be at least {{limit}} characters long",
+	"ValidadeSchema.email": "{{name}} must be a valid email",
+	"ValidadeSchema.only": "{{name}} must be one of {{valids}}",
+	"ValidadeSchema.async": "{{name}} not exist",
+
+	"EmailError.email": "Failed to try to send email",
+
+	"InternalServer":"Contact the developer and give me your ID {{id}}, we're sorry this happened 😞"
+}

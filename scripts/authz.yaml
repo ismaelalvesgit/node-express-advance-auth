@@ -1,0 +1,6 @@
+apiVersion: 0.1
+configs:
+  - service: "user-manager"
+    methods: ["PUT", "GET", "DELETE"]
+    paths: ["/user*"]
+    roles: ["user-edit", "user-remove", "user-find"] 
