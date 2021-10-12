@@ -4,6 +4,7 @@ import * as clientCredentialsModel from "../model/clientCredentials.model";
 import { encrypt } from "../utils";
 import knex from "../db";
 import sourceType from "../enum/sourceType";
+import env from "../env";
 
 /**
  * @param {import("../model/user.model").User} where 
@@ -22,7 +23,7 @@ export const createUser = async (data) =>{
     return knex.transaction(async (trx)=>{
         await userModel.createUser(data, trx);
         const [ user ] = await userModel.findAllUser({email: data.email}, trx);
-        const [ scope ] = await scopeModel.findAllScope({name: "user-manager"}, trx);
+        const [ scope ] = await scopeModel.findAllScope({name: env.scope.user}, trx);
         if(scope){
             await clientCredentialsModel.createClientCredentials({
                 userId: user.id,

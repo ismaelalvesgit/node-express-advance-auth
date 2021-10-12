@@ -5,33 +5,29 @@ import { createScopeShema, updateScopeShema, roleScopeShema } from "../validatio
 import { findOne, find, create, update, active, disabled, addRole, removeRole } from "../controllers/scope.controller";
 import authorization from "../middleware/authorizeMiddleware";
 
-/**
- * Execute for all routes
- */
-router.use(authorization());
 
 /**
  * PUT - /scope/role/:id
  * DELETE - /scope/role/:id
  */
 router.route("/role/:id")
-    .post(verify(roleScopeShema), addRole)
-    .delete(verify(roleScopeShema), removeRole);
+    .post(authorization("scope-81c3567e"), verify(roleScopeShema), addRole)
+    .delete(authorization("scope-05152b08"), verify(roleScopeShema), removeRole);
 
 /**
  * PUT - /scope/active/:id
  * PUT - /scope/disabled/:id
  */
-router.put("/active/:id", active);
-router.put("/disabled/:id", disabled);
+router.put("/active/:id", authorization("scope-327c6e70"), active);
+router.put("/disabled/:id", authorization("scope-1155af41"), disabled);
 
 /**
  * GET - /scope/:id
  * PUT - /scope/:id
  */
 router.route("/:id")
-    .get(findOne)
-    .put(verify(updateScopeShema), update);
+    .get(authorization("scope-271f6cc8"), findOne)
+    .put(authorization("scope-5011d1c0"), verify(updateScopeShema), update);
 
 
 /**
@@ -39,7 +35,7 @@ router.route("/:id")
  * POST - /scope
  * */    
 router.route("/")
-    .get(find)
-    .post(verify(createScopeShema), create);
+    .get(authorization("scope-271f6cc8"), find)
+    .post(authorization("scope-c3ed91ba"), verify(createScopeShema), create);
 
 export default router;

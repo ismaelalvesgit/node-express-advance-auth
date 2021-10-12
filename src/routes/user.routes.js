@@ -11,9 +11,9 @@ import authorization from "../middleware/authorizeMiddleware";
  * DELETE - /user/:id
  */
 router.route("/:id")
-    .get(authorization(["admin-user-find"]), findOne)
-    .put(authorization(["admin-user-edit"]), verify(updateUserShema), update)
-    .delete(authorization(["admin-user-delete"]), del);
+    .get(authorization("user-e4d47e1d"), findOne)
+    .put(authorization("user-fa651125"), verify(updateUserShema), update)
+    .delete(authorization("user-e8d40e62"), del);
 
 /**
  * GET - /user
@@ -22,9 +22,9 @@ router.route("/:id")
  * DELETE - /user
  * */    
 router.route("/")
-    .get(authorization(), find)
-    .post(verify(createUserShema), create)
-    .put(authorization(), verify(updateUserShema), update)
-    .delete(authorization(), del);
+    .get(authorization("user-e4d47e1d"), find)
+    .post(authorization("user-2c0c66f3"), verify(createUserShema), create)
+    .put(authorization("user-fa651125"), verify(updateUserShema), update)
+    .delete(authorization("user-e8d40e62"), del);
 
 export default router;

@@ -1,6 +1,64 @@
 apiVersion: 0.1
 configs:
-  - service: "user-manager"
-    methods: ["PUT", "GET", "DELETE"]
-    paths: ["/user*"]
-    roles: ["user-edit", "user-remove", "user-find"] 
+  # User
+  - Sid: "user-fa651125"
+    service: "user-manager"
+    roles: ["user-edit", "admin-user-edit"] 
+  - Sid: "user-e8d40e62"
+    service: "user-manager"
+    roles: ["user-remove", "admin-user-remove"] 
+  - Sid: "user-e4d47e1d"
+    service: "user-manager"
+    roles: ["user-find", "admin-user-find"] 
+  - Sid: "user-2c0c66f3"
+    service: "user-manager"
+    optional: true
+    roles: ["admin-user-create"] 
+  # Credentials
+  - Sid: "credentials-14bf8221"
+    service: "credentials-manager"
+    roles: ["credentials-find"] 
+  - Sid: "credentials-37baabb2"
+    service: "credentials-manager"
+    roles: ["credentials-remove"] 
+  - Sid: "credentials-f3c3a587"
+    service: "credentials-manager"
+    roles: ["credentials-create"] 
+  # Role
+  - Sid: "role-ceb679f8"
+    service: "role-manager"
+    roles: ["role-find"] 
+  - Sid: "role-13d81f99"
+    service: "role-manager"
+    roles: ["role-disable"] 
+  - Sid: "role-55a2c468"
+    service: "role-manager"
+    roles: ["role-enable"] 
+  - Sid: "role-75d4364a"
+    service: "role-manager"
+    roles: ["role-edit"] 
+  - Sid: "role-f3c3a587"
+    service: "role-manager"
+    roles: ["role-create"] 
+  # Scope
+  - Sid: "scope-271f6cc8"
+    service: "scope-manager"
+    roles: ["scope-find"] 
+  - Sid: "scope-1155af41"
+    service: "scope-manager"
+    roles: ["scope-disable"] 
+  - Sid: "scope-327c6e70"
+    service: "scope-manager"
+    roles: ["scope-enable"] 
+  - Sid: "scope-5011d1c0"
+    service: "scope-manager"
+    roles: ["scope-edit"] 
+  - Sid: "scope-c3ed91ba"
+    service: "scope-manager"
+    roles: ["scope-create"] 
+  - Sid: "scope-81c3567e"
+    service: "scope-manager"
+    roles: ["scope-add-role"] 
+  - Sid: "scope-05152b08"
+    service: "scope-manager"
+    roles: ["scope-remove-role"] 

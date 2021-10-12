@@ -21,6 +21,13 @@ exports.seed = async function(knex) {
     }).transacting(trx);
 
     await knex('role').insert({
+      name: "user-find",
+      description: "namespace: user",
+      route: "/user",
+      httpMethod: "GET"
+    }).transacting(trx);
+
+    await knex('role').insert({
       name: "user-edit",
       description: "namespace: user",
       route: "/user",
@@ -46,7 +53,7 @@ exports.seed = async function(knex) {
       description: "Manager user´s",
     }).transacting(trx);
 
-    const roles = await knex('role').select('id').whereIn('name', ["user-edit", "user-create", "user-delete"]).transacting(trx);
+    const roles = await knex('role').select('id').whereIn('name', ["user-edit", "user-create", "user-delete", "user-find"]).transacting(trx);
     const scopeId = await knex('scope').select('id').first().where({name: "user-manager"}).transacting(trx);
     const userId = await knex('user').select('id').first().where({email: "admin@admin.com"}).transacting(trx);
 

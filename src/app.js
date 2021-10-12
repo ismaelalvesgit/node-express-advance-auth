@@ -88,11 +88,12 @@ app.use("/role", roleRouter);
 app.use("/scope", scopeRouter);
 app.use("/credentials", clientCredentialsRouter);
 app.use("/auth", authRouter);
-app.all("*", (req, res)=>{
-    res.status(404).json({message: "Rota Não Encontrada"});
-});
 
 /** Metric Endpoint */
 injectMetricsRoute(app);
+
+app.all("*", (req, res)=>{
+    res.status(404).json({message: "Rota Não Encontrada"});
+});
 
 export { app, httpServer };

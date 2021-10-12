@@ -5,32 +5,28 @@ import { createRoleShema, updateRoleShema } from "../validations/roles";
 import { findOne, find, create, update, active, disabled } from "../controllers/role.controller";
 import authorization from "../middleware/authorizeMiddleware";
 
-/**
- * Execute for all routes
- */
-router.use(authorization());
 
 /**
  * PUT - /role/active/:id
  * PUT - /role/disabled/:id
  */
-router.put("/active/:id", active);
-router.put("/disabled/:id", disabled);
+router.put("/active/:id", authorization("role-55a2c468"), active);
+router.put("/disabled/:id", authorization("role-13d81f99"), disabled);
 
 /**
  * GET - /role/:id
  * PUT - /role/:id
  */
 router.route("/:id")
-    .get(findOne)
-    .put(verify(updateRoleShema), update);
+    .get(authorization("role-ceb679f8"), findOne)
+    .put(authorization("role-75d4364a"), verify(updateRoleShema), update);
 
 /**
  * GET - /role
  * POST - /role
  * */    
 router.route("/")
-    .get(find)
-    .post(verify(createRoleShema), create);
+    .get(authorization("role-ceb679f8"), find)
+    .post(authorization("role-f3c3a587"), verify(createRoleShema), create);
 
 export default router;

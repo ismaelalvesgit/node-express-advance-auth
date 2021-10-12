@@ -5,16 +5,12 @@ import { clientCredentials } from "../validations/clientCredentials";
 import { findOne, find, create, remove} from "../controllers/clientCredentials.controller";
 import authorization from "../middleware/authorizeMiddleware";
 
-/**
- * Execute for all routes
- */
-router.use(authorization());
 
 /**
  * GET - /credentials/:id
  */  
 router.route("/:id")
-    .get(findOne);
+    .get(authorization("credentials-14bf8221"), findOne);
     
 
 /**
@@ -22,8 +18,8 @@ router.route("/:id")
  * GET - /credentials
  */    
 router.route("/")
-    .get(find)    
-    .post(verify(clientCredentials), create)
-    .delete(verify(clientCredentials), remove);
+    .get(authorization("credentials-14bf8221"), find)    
+    .post(authorization("credentials-f3c3a587"), verify(clientCredentials), create)
+    .delete(authorization("credentials-37baabb2"), verify(clientCredentials), remove);
 
 export default router;

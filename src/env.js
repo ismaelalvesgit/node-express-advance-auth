@@ -5,6 +5,9 @@ const url =  process.env.SERVER_URL  || "http://localhost:3000";
 export default {
     env: process.env.NODE_ENV || "development",
     timezone: process.env.TIME_ZONE || "America/Fortaleza",
+    scope: {
+        user: process.env.SCOPE_USER || "user-manager"
+    },
     security:{
         ssl: {
             cert: process.env.SSL_CERT,
